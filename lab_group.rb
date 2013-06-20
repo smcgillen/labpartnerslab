@@ -8,8 +8,8 @@ puts ""
 if group_size <= 0
   puts "Invalid group size"
   puts "What is the desired Group Size?"
-group_size = gets.chomp.to_i
-puts ""
+  group_size = gets.chomp.to_i
+  puts ""
 end
 
 groups = []
@@ -23,6 +23,7 @@ if groups.last.length < group_size
   puts "Re-allocating stragglers to 2nd last group"
   puts ""
   groups[-2] = groups[-2] + groups.last #allocating stragglers to 2nd last group
+  groups.pop
 end
 
 groups.each do |g|
