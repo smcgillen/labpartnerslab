@@ -5,26 +5,32 @@ puts "What is the desired Group Size?"
 group_size = gets.chomp.to_i
 puts ""
 
+if group_size <= 0
+  puts "Invalid group size"
+  puts "What is the desired Group Size?"
+group_size = gets.chomp.to_i
+puts ""
+end
+
 groups = []
 while random.size != 0
   group = random.pop group_size
-  groups.push group
-  #puts group.join ', '
-  #print "Remaining:"
-  #puts random.join ', '
+  groups.push group #creating supergroup array with small group arrays as subjects
+end
+
+if groups.last.length < group_size
+  puts "Too Small!"
+  puts "Re-allocating stragglers to 2nd last group"
+  puts ""
+  groups[-2] = groups[-2] + groups.last #allocating stragglers to 2nd last group
 end
 
 groups.each do |g|
   print "Group: "
   puts g.join ', '
-  #print "Too small!" if (g.length < group_size)
 end
 
-puts groups.last
-puts groups.last.size
-puts group_size
+#puts groups.last
+#puts groups.last.size
+#puts group_size
 
-if group.last.size.to_i < group_size
-  print "Too Small!"
-
-end
